@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,7 +20,8 @@ public class MWD extends AbstractSyncedDomainObject {
     @Column(name = "uid", nullable = false, length = 10)
     private String uid;
 
-    @Column(name = "branch", nullable = false, length = 10)
+    @JoinColumn(name = "branch", nullable = false)
+    @ManyToOne
     private Branch branch;
 
     @Column(name = "is_staff", nullable = false, length = 1)
@@ -29,7 +31,8 @@ public class MWD extends AbstractSyncedDomainObject {
     @Enumerated(EnumType.STRING)
     private MWDRank rank;
 
-    @Column(name = "career")
+    @JoinColumn(name = "career")
+    @ManyToOne
     private Career career;
 
     @Column(name = "affiliation_status", nullable = false, length = 10)
